@@ -109,7 +109,10 @@ router.post(
 			// return res.json(savedUser);
 			const salt = await bcrypt.genSalt(10);
 			request.password = await bcrypt.hash(password, salt);
+			console.log("Before saving request:", request);
 			savedRequest = await request.save();
+			console.log("After saving request:", savedRequest);
+
 			console.log("Join Request sent");
 
 			const studentOptions = {

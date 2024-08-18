@@ -48,11 +48,16 @@ export const login =
 		try {
 			const res = await axios.post("/api/auth", body, config);
 			console.log("login details :- " , res);
+
+			// Use a dummy token for testing
+			const dummyToken = "dummyToken123456";
+
 			localStorage.setItem("_user_data" , JSON.stringify(res.data.user_data));
 
 			dispatch({
 				type: LOGIN_SUCCESS,
-				payload: res.data.token,
+				//payload: res.data.token,
+				payload: dummyToken, 
 			});
 
 			dispatch(loadUser());
