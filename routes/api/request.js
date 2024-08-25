@@ -143,6 +143,13 @@ router.get("/post/:id/approve", authAdmin, async (req, res) => {
 	try {
 		console.log("Approve post request recieved " + req.params.id);
 		const request = await PostRequest.findById(req.params.id);
+		console.log("Join request found:", request);
+		
+		if (!request) {
+            console.log("Join request not found");
+            return res.status(404).send("Join request not found");
+        }
+
 		const { heading, text, avatar, user, date, name, visibility, channel, images } =
 			request;
 

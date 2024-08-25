@@ -16,11 +16,26 @@ import {
 } from "./types";
 
 // Load user
+// export const loadUser = () => async (dispatch) => {
+// 	if (localStorage.token) {
+// 		setAuthToken(localStorage.token);
+// 	}
+// 	try {
+// 		const res = await axios.get("/api/auth");
+// 		dispatch({
+// 			type: USER_LOADED,
+// 			payload: res.data,
+// 		});
+// 	} catch (error) {
+// 		console.log(error.message);
+// 		dispatch({
+// 			type: AUTH_ERROR,
+// 		});
+// 	}
+// };
 export const loadUser = () => async (dispatch) => {
-	if (localStorage.token) {
-		setAuthToken(localStorage.token);
-	}
 	try {
+		// Assuming you have a valid token stored
 		const res = await axios.get("/api/auth");
 		dispatch({
 			type: USER_LOADED,
@@ -33,6 +48,7 @@ export const loadUser = () => async (dispatch) => {
 		});
 	}
 };
+
 
 // Login
 export const login =
@@ -51,6 +67,9 @@ export const login =
 
 			// Use a dummy token for testing
 			const dummyToken = "dummyToken123456";
+
+			// Store the token in local storage for authentication persistence
+			localStorage.setItem("token", dummyToken);
 
 			localStorage.setItem("_user_data" , JSON.stringify(res.data.user_data));
 

@@ -122,7 +122,8 @@ export default function requestReducer(state = initialState, action) {
 		case CLEAR_REQUESTS:
 			return {
 				...state,
-				joinRequests: null,
+				// joinRequests: null,
+				joinRequests: [],
 				postRequests: null,
 			};
 		default:
