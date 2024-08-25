@@ -61,7 +61,7 @@ router.post(
 
 			request = null;
 			if (role === "student") {
-				request = new User({
+				request = new JoinRequest({
 					name,
 					email,
 					password,
@@ -71,7 +71,7 @@ router.post(
 					passing_year,
 				});
 			} else if (role === "faculty") {
-				request = new User({
+				request = new JoinRequest({
 					name,
 					email,
 					password,
@@ -80,7 +80,7 @@ router.post(
 					designation,
 				});
 			} else if (role === "alumni") {
-				request = new User({
+				request = new JoinRequest({
 					name,
 					email,
 					password,

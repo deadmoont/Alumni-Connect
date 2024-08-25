@@ -51,40 +51,18 @@ export const getPostRequests = () => async (dispatch) => {
 	}
 };
 
-// export const approveJoinRequest = (requestId) => async (dispatch) => {
-// 	try {
-		
-// 		const res = await axios.get(`/api/requests/join/${requestId}/approve`);
-// 		console.log(res)
-// 		console.log("inside actions file of approve join request");
-// 		dispatch({
-// 			type: APPROVE_JOIN_REQUEST,
-// 			payload: res.data,
-// 		});
-// 	} catch (err) {
-// 		dispatch(setAlert("Approve Request Error", "danger"));
-// 		dispatch({
-// 			type: APPROVE_JOIN_REQUEST_ERROR,
-// 			payload: {
-// 				msg: err.response.statusText,
-// 				status: err.response.status,
-// 			},
-// 		});
-// 	}
-// };
-
-export const approveJoinRequest = () => async (dispatch) => {
+export const approveJoinRequest = (requestId) => async (dispatch) => {
 	try {
-		const res = await axios.patch(`/api/requests/join/approve-all`);
-		console.log(res);
-		console.log("All join requests approved");
-
+		
+		const res = await axios.get(`/api/requests/join/${requestId}/approve`);
+		console.log(res)
+		console.log("inside actions file of approve join request");
 		dispatch({
 			type: APPROVE_JOIN_REQUEST,
 			payload: res.data,
 		});
 	} catch (err) {
-		dispatch(setAlert("Approve All Requests Error", "danger"));
+		dispatch(setAlert("Approve Request Error", "danger"));
 		dispatch({
 			type: APPROVE_JOIN_REQUEST_ERROR,
 			payload: {
@@ -94,6 +72,7 @@ export const approveJoinRequest = () => async (dispatch) => {
 		});
 	}
 };
+
 
 
 export const rejectJoinRequest = (requestId) => async (dispatch) => {
