@@ -80,13 +80,13 @@ export const approveJoinRequest = () => async (dispatch) => {
 		console.log("All join requests approved");
 
 		dispatch({
-			type: APPROVE_ALL_JOIN_REQUESTS,
+			type: APPROVE_JOIN_REQUEST,
 			payload: res.data,
 		});
 	} catch (err) {
 		dispatch(setAlert("Approve All Requests Error", "danger"));
 		dispatch({
-			type: APPROVE_ALL_JOIN_REQUESTS_ERROR,
+			type: APPROVE_JOIN_REQUEST_ERROR,
 			payload: {
 				msg: err.response.statusText,
 				status: err.response.status,
