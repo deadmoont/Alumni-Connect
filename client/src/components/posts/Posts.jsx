@@ -7,7 +7,8 @@ import PostCard from "./PostCard";
 import { Link } from "react-router-dom";
 import { closeSideNav } from "../../actions/alert";
 import { useLocation } from "react-router-dom";
-import { getAllChannels } from "../../actions/channel";
+import { getAllChannels,createChannel } from "../../actions/channel";
+
 
 function useQuery() {
 	return new URLSearchParams(useLocation().search);
@@ -17,6 +18,7 @@ const Posts = ({
 	getPosts,
 	closeSideNav,
 	getAllChannels,
+	createChannel,
 	post: { posts, loading },
 	auth: { authUser, loadingAuth },
 	extras: { channels },
@@ -25,6 +27,7 @@ const Posts = ({
 	const query = useQuery();
 	const searchQuery = query.get("search");
 	const [search, setSearch] = useState("");
+	const [newChannelName, setNewChannelName] = useState("");
 
 	useEffect(() => {
 		async function getMyData() {
@@ -34,6 +37,17 @@ const Posts = ({
 		}
 		getMyData();
 	}, [match.params.channel_name]);
+
+
+	const handleCreateChannel = () => {
+		// Check if the input is not empty before creating the channel
+		if (newChannelName.trim()) {
+			createChannel(newChannelName);
+			setNewChannelName(""); // Clear input field after creation
+		} else {
+			alert("Channel name cannot be empty");
+		}
+	};
 
 	// const onSubmit = (e) => {
 	// 	e.preventDefault();
@@ -89,6 +103,47 @@ const Posts = ({
 								</li>
 							);
 						})}
+
+				<div style={{
+					marginTop: '1.5rem',
+					paddingLeft: '2rem',
+					display: 'flex',
+					flexDirection: 'row',
+					gap: '0.5rem'
+				}}>
+					<input
+								type="text"
+								value={newChannelName}
+								onChange={(e) => setNewChannelName(e.target.value)}
+								style={{
+									padding: '0.5rem',
+									border: '1px solid lightgrey',
+									borderRadius: '5px',
+									width: '100%',
+									fontSize: '1rem',
+									flex: 7,
+								}}
+							/>
+							<button
+								style={{
+									padding: '0.5rem',
+									backgroundColor: 'blue',
+									color: 'white',
+									border: 'none',
+									marginRight: '1.9rem',
+									borderRadius: '5px',
+									cursor: 'pointer',
+									fontSize: '1rem',
+									flex: 3,
+								}}
+								onClick={handleCreateChannel} // Call the handler on button click
+								onMouseOver={(e) => (e.target.style.backgroundColor = 'darkblue')}
+								onMouseOut={(e) => (e.target.style.backgroundColor = 'blue')}
+							>
+						<strong>Add Channel</strong>
+					</button>
+				</div>
+
 					</ul>
 					<div className="content col-md-9">
 						<div className="search-div">
@@ -176,4 +231,5 @@ export default connect(mapStateToProps, {
 	getPosts,
 	closeSideNav,
 	getAllChannels,
+	createChannel,
 })(Posts);
