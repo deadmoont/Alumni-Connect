@@ -105,7 +105,7 @@ const Posts = ({
 						})}
 
 				{/* Only render the input and button if the user is Alumni or Admin */}
-				{authUser && (authUser.role === "Alumni" || authUser.isAdmin) && (
+				{authUser && (authUser.role === "alumni" || authUser.isAdmin) && (
 							<div
 								style={{
 									marginTop: "1.5rem",

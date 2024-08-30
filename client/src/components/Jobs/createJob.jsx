@@ -22,6 +22,11 @@ const Job = () => {
   const createJob = async (e) => {
     e.preventDefault();
 
+    if (!job_name || !job_description || !job_link || !job_deadline) {
+      alert("Please fill in all fields");
+      return;
+    }
+
     const formdata = {
       username: userName,
       userID: userID,
@@ -102,10 +107,13 @@ const Job = () => {
                   onChange={(e) => set_job_deadline(e.target.value)}
                 />
               </Form.Group>
-
+              <Link to='/jobs'>
+                
+              </Link>
               <Button variant="primary" type="submit">
-                Submit
+                  Submit
               </Button>
+              
             </Form>
           ) : 
               <h4>Students cannot create Job</h4>
