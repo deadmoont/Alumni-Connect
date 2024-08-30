@@ -104,45 +104,54 @@ const Posts = ({
 							);
 						})}
 
-				<div style={{
-					marginTop: '1.5rem',
-					paddingLeft: '2rem',
-					display: 'flex',
-					flexDirection: 'row',
-					gap: '0.5rem'
-				}}>
-					<input
-								type="text"
-								value={newChannelName}
-								onChange={(e) => setNewChannelName(e.target.value)}
+				{/* Only render the input and button if the user is Alumni or Admin */}
+				{authUser && (authUser.role === "Alumni" || authUser.isAdmin) && (
+							<div
 								style={{
-									padding: '0.5rem',
-									border: '1px solid lightgrey',
-									borderRadius: '5px',
-									width: '100%',
-									fontSize: '1rem',
-									flex: 7,
+									marginTop: "1.5rem",
+									paddingLeft: "2rem",
+									display: "flex",
+									flexDirection: "row",
+									gap: "0.5rem",
 								}}
-							/>
-							<button
-								style={{
-									padding: '0.5rem',
-									backgroundColor: 'blue',
-									color: 'white',
-									border: 'none',
-									marginRight: '1.9rem',
-									borderRadius: '5px',
-									cursor: 'pointer',
-									fontSize: '1rem',
-									flex: 3,
-								}}
-								onClick={handleCreateChannel} // Call the handler on button click
-								onMouseOver={(e) => (e.target.style.backgroundColor = 'darkblue')}
-								onMouseOut={(e) => (e.target.style.backgroundColor = 'blue')}
 							>
-						<strong>Add Channel</strong>
-					</button>
-				</div>
+								<input
+									type="text"
+									value={newChannelName}
+									onChange={(e) => setNewChannelName(e.target.value)}
+									style={{
+										padding: "0.5rem",
+										border: "1px solid lightgrey",
+										borderRadius: "5px",
+										width: "100%",
+										fontSize: "1rem",
+										flex: 7,
+									}}
+								/>
+								<button
+									style={{
+										padding: "0.5rem",
+										backgroundColor: "blue",
+										color: "white",
+										border: "none",
+										marginRight: "1.9rem",
+										borderRadius: "5px",
+										cursor: "pointer",
+										fontSize: "1rem",
+										flex: 3,
+									}}
+									onClick={handleCreateChannel}
+									onMouseOver={(e) =>
+										(e.target.style.backgroundColor = "darkblue")
+									}
+									onMouseOut={(e) =>
+										(e.target.style.backgroundColor = "blue")
+									}
+								>
+									<strong>Add Channel</strong>
+								</button>
+							</div>
+						)}
 
 					</ul>
 					<div className="content col-md-9">
@@ -188,6 +197,7 @@ const Posts = ({
 							)}
 							{posts !== null &&
 								posts.map((pst) => {
+									console.log(pst);
 									if (
 										authUser !== null &&
 										(pst.visibility.includes(
