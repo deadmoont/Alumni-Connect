@@ -20,7 +20,7 @@ const Navbar = ({
           <span className="hide-sm">Achievements/Awards</span>
         </Link>
       </li> */}
-      <li >
+      <li>
         <Notification />
       </li>
       <li>
@@ -29,20 +29,13 @@ const Navbar = ({
         </Link>
       </li>
       <li>
-        <Link
-          to="/jobs"
-          className="navbar-link"
-        >
+        <Link to="/jobs" className="navbar-link">
           <span className="hide-sm">Jobs</span>
         </Link>
       </li>
 
-
       <li>
-        <Link
-          to="/events"
-          className="navbar-link"
-        >
+        <Link to="/events" className="navbar-link">
           <span className="hide-sm">Events</span>
         </Link>
       </li>
@@ -113,19 +106,13 @@ const Navbar = ({
         </Link>
       </li>
       <li>
-        <Link
-          to="/jobs"
-          className="navbar-link"
-        >
+        <Link to="/jobs" className="navbar-link">
           <span className="hide-sm">Jobs</span>
         </Link>
       </li>
 
       <li>
-        <Link
-          to="/events"
-          className="navbar-link"
-        >
+        <Link to="/events" className="navbar-link">
           <span className="hide-sm">Events</span>
         </Link>
       </li>
@@ -172,24 +159,33 @@ const Navbar = ({
   const guestLinks = (
     <Fragment>
       <li>
-        <Link to="/add-achievement" className="navbar-link">
-          <span className="hide-sm">Achievements/Awards</span>
+        <Link to="/add-achievement" className="navbar-link hero-nav-links">
+          <span className="hide-sm nav-lt">Achievements</span>
         </Link>
       </li>
       <li>
-        <Link to="/help" className="navbar-link">
-          <span className="hide-sm">Help</span>
+        <Link to="/help" className="navbar-link hero-nav-links">
+          <span className="hide-sm nav-lt">About</span>
         </Link>
       </li>
       <li>
-        <Link to="/register" className="navbar-link">
-          Register
+        <Link to="/help" className="navbar-link hero-nav-links">
+          <span className="hide-sm nav-lt">Help</span>
         </Link>
       </li>
 
       <li>
-        <Link to="/login" className="navbar-link">
-          Login
+        <Link
+          to="/login"
+          style={{ color: "black" }}
+          className="login navbar-link hero-nav-links "
+        >
+          <span className="nav-lt">Login</span>
+        </Link>
+      </li>
+      <li>
+        <Link to="/register" className="navbar-link hero-nav-links register">
+          <span className="nav-lt">Register</span>
         </Link>
       </li>
     </Fragment>
@@ -252,23 +248,20 @@ const Navbar = ({
   return (
     <div>
       <nav className="navbar">
-        <div>
-          <img
-            src={logo}
-            alt="logo"
-            style={{ height: "30px", width: "30px", marginBottom: "5px" }}
-            className="navbar-link"
-          />
-            <Link
-              to="/"
-              className="logo navbar-link"
-              style={{ fontSize: "1.1em" }}
-              
-              >
-              IIITA <span style={{ textTransform: "capitalize" }}>Alumni</span>
-              <span style={{ textTransform: "capitalize" }}>Connect</span>
-            </Link>
-        </div>
+        <img
+          src={logo}
+          alt="logo"
+          style={{ height: "50px", width: "50px" }}
+          className="navbar-link hero-logo"
+        />
+        {/* <Link
+            to="/"
+            className="logo navbar-link"
+            style={{ fontSize: "1.1em" }}
+          >
+            IIITA <span style={{ textTransform: "capitalize" }}>Alumni</span>
+            <span style={{ textTransform: "capitalize" }}>Connect</span>
+          </Link> */}
         {!loadingAuth && (
           <Fragment>
             {isAuthenticated && authUser !== null
