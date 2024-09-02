@@ -464,13 +464,12 @@ tr > .btn {
   }
 }
 
-.profile-grid {
-  /* display: grid;
+/* .profile-grid {
+	/* display: grid;
 	grid-template-areas:
 		"top top"
 		"exp edu";
-	grid-gap: 1rem; */
-}
+	grid-gap: 1rem; }*/
 
 .profile-top {
   display: flex;

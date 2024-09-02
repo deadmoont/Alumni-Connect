@@ -16,7 +16,7 @@ const PostCard = ({
 		comments,
 		date,
 		user,
-		avatar,
+		image,
 		name,
 	},
 	auth: { loadingAuth, authUser },
@@ -35,7 +35,7 @@ const PostCard = ({
 						<img
 							className="rounded-circle"
 							alt="avatar"
-							src={avatar}
+							src={image}
 							width="45"
 						/>
 						<h6>{name}</h6>
@@ -80,13 +80,16 @@ const PostCard = ({
 							<span>{dislikes.length}</span>
 						</button>
 						<button className="btn post-action">
+						<Link to={`/posts/${_id}`}>
 							<i
 								className="far fa-comments post-icons"
 								aria-hidden="true"
 							/>
-							<div className="post-action-count">
+							{/* <div className="post-action-count">
 								<span>{comments.length}</span>
-							</div>
+							</div> */}
+						</Link>
+							
 						</button>
 						{!loadingAuth && authUser._id === user && (
 							<button

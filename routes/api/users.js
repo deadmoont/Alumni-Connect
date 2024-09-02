@@ -722,6 +722,15 @@ router.get("/type/:user_type", auth, async (req, res) => {
 		res.status(500).json("Server Error");
 	}
 });
+// Fetch user's friends(followers)
+router.get("/:userId/friends", auth, async (req, res) => {
+    try {
+        const user = await User.findById(req.params.userId).populate("followers"); // Adjust as per your schema
+        res.status(200).json(user.followers);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
 // router.get("/github/:username", (req, res) => {
 // 	try {
