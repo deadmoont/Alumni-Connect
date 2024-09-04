@@ -23,6 +23,61 @@ body {
   max-width: 1500px;
 }
 
+/* general properties */
+.large {
+  /* color: white; */
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+p {
+  /* color: white; */
+  font-size: 16px;
+}
+
+/* ------------------ */
+
+.btn {
+  transition: all 200ms;
+  text-decoration: none;
+  background-color: white;
+  color: black;
+  padding: 10px 20px;
+  border-radius: 15px;
+  display: inline-block;
+  text-align: center;
+  font-weight: 600;
+  width: 120px !important;
+  letter-spacing: normal;
+}
+.btn:hover {
+  text-decoration: none;
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  transform: translateY(-3px);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 10px 20px;
+}
+.btn-primary {
+  transition: all 200ms;
+  text-decoration: none;
+  background-color: black;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 15px;
+  display: inline-block;
+  text-align: center;
+  font-weight: 600;
+  width: 120px !important;
+  letter-spacing: normal;
+}
+
+.btn-primary:hover {
+  text-decoration: none;
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 10px 20px;
+  transform: translateY(-3px);
+}
+
 .lead,
 .text-primary {
   text-align: center;
@@ -81,8 +136,8 @@ body {
   -webkit-background-clip: text;
 }
 .hero-logo {
-  color: white;
   filter: grayscale(100%) brightness(10000%);
+  /* filter: brightness(0); */
 }
 .navbar {
   position: absolute;
@@ -123,7 +178,7 @@ ul {
 }
 
 .navbar-link {
-  color: #ffffff;
+  /* color: #ffffff; */
   font-size: 1rem;
   letter-spacing: 0.15rem;
   font-weight: 600;
@@ -143,10 +198,11 @@ ul {
   width: 120px !important;
   letter-spacing: normal;
   transition: all 200ms;
+  /* border: solid 2px white; */
 }
 .register:hover {
+  box-shadow: rgba(0, 0, 0, 0.1) 0 10px 20px;
   text-decoration: none;
-  background-color: rgb(0, 0, 0);
   color: rgb(255, 255, 255);
   transform: translateY(-3px);
   /* translate: (0, -3px, 0); */
@@ -163,10 +219,12 @@ ul {
   font-weight: 600;
   width: 120px !important;
   letter-spacing: normal;
+  /* border: solid 2px black; */
 }
 .login:hover {
   text-decoration: none;
   transform: translateY(-3px);
+  box-shadow: rgba(0, 0, 0, 0.1) 0 10px 20px;
 }
 .nav-lt {
   transition: all 300ms;
@@ -185,7 +243,7 @@ ul {
   position: absolute;
   background: white;
   width: 100%;
-  height: 1.5px;
+  height: 2px;
   bottom: -2px;
   left: 0;
   transform-origin: bottom right;
@@ -231,6 +289,17 @@ ul {
   height: 100%;
 }
 
+@keyframes landing {
+  from {
+    opacity: 0;
+    transform: translateY(-10%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .hero-inner {
   color: #fff;
   height: 100%;
@@ -242,6 +311,28 @@ ul {
   align-items: center;
   justify-content: center;
   text-align: center;
+}
+
+.hero-inner > .hero-head {
+  animation-name: landing;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-fill-mode: both;
+}
+.hero-inner > .hero-text {
+  animation-name: landing;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-out;
+  animation-delay: 500ms;
+  animation-fill-mode: both;
+}
+.hero-inner > .auth-buttons {
+  animation-name: landing;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-out;
+  animation-delay: 800ms;
+  animation-fill-mode: both;
 }
 .hero-head {
   margin-top: 20px;
@@ -342,17 +433,18 @@ ul {
 }
 
 .form-container {
-  margin: 5em auto;
+  /* margin: 5em auto; */
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .form {
-  border: 2px solid #eeeeee;
-  padding: 3em 2em;
-  border-radius: 10px;
-  width: 100%;
+  border: 2px solid #1e1e1e;
+  padding: 2em;
+  border-radius: 15px;
+  width: 70%;
+  text-align: center;
 }
 
 .auth-form {
@@ -369,14 +461,14 @@ input,
   outline: none;
   padding: 0.5em;
   width: 100%;
-  border: 1.5px solid #ccc;
+  border: 1.5px solid #1e1e1e;
   border-radius: 4px;
 }
-.profile-form-container,
+/* .profile-form-container,
 .post-form-container {
   margin: 2em auto;
-}
-.post-from {
+} */
+.post-form {
   width: 100%;
 }
 /* .post-form-container{
@@ -1018,21 +1110,31 @@ textarea:focus {
   padding-right: 0px;
 }
 
-.contact-info,
+.help-section {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  gap: 10px;
+}
+
 .phone-icon,
 .mail-icon,
 .location-icon,
 .footer-section {
   float: left;
   display: inline;
-  width: 80%;
 }
 
 .phone-icon,
 .mail-icon,
 .location-icon {
-  width: 15%;
-  margin-top: 5px;
+  /* width: 15%; */
+  margin: 5px;
+}
+
+.help-page {
+  display: flex;
 }
 
 @media only screen and (max-width: 1135px) {

@@ -88,16 +88,45 @@ function Footer() {
             </h6>
             <ul>
               <li>
+                <Link to="/" className="navbar-link">
+                  <span className="hide-sm nav-lt">Home</span>
+                </Link>
+              </li>
+              <li>
                 <Link to="/add-achievement" className="navbar-link">
-                  <span className="nav-lt hide-sm">Achievements/Awards</span>
+                  <span className="hide-sm nav-lt">Achievements/Awards</span>
                 </Link>
               </li>
               <li>
                 <Link to="/help" className="navbar-link">
-                  <span className="nav-lt hide-sm">Help</span>
+                  <span className="hide-sm nav-lt">Help</span>
                 </Link>
               </li>
-              {/* <li>Achievements/Awards</li> */}
+              <li>
+                <Link to="/about" className="navbar-link">
+                  <span className="hide-sm nav-lt">About</span>
+                </Link>
+              </li>
+              <li>
+                <a
+                  href="https://www.iiita.ac.in/"
+                  className="navbar-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span className="hide-sm nav-lt">IIIT Allahabad</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/in/iiita-alumni-affairs/"
+                  className="navbar-link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span className="hide-sm nav-lt">LinkedIn</span>
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -115,6 +144,10 @@ function Footer() {
 							id excepturi hic.
 						</p> */}
             <div className="help-section help-location-div pt-1 pb-1">
+              <i
+                className="fas fa-map-marker-alt location-icon"
+                aria-hidden="false"
+              ></i>
               <p
                 className="contact-info contact-info-text"
                 style={{ fontSize: "15px" }}

@@ -1,5 +1,5 @@
-import React, { Fragment, useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { Fragment, useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { logOut } from "../../actions/auth";
@@ -13,6 +13,42 @@ const Navbar = ({
   closeSideNav,
   sideNavOpen,
 }) => {
+  // main rendering part
+  const [navStyle, setNavbarStyle] = useState({
+    backgroundColor: "transparent",
+    color: "white",
+    position: "absolute",
+  });
+  const [navLinkColor, setNavLinkColor] = useState({
+    color: "white",
+    filter: "grayscale(100%) brightness(100000)",
+  });
+
+  const loc = useLocation();
+  useEffect(() => {
+    if (loc.pathname !== "/") {
+      setNavbarStyle({
+        backgroundColor: "white",
+        color: "black",
+        position: "relative",
+      });
+      setNavLinkColor({
+        color: "black",
+        filter: "brightness(0)",
+      });
+    } else {
+      setNavbarStyle({
+        backgroundColor: "transparent",
+        color: "white",
+        position: "absolute",
+      });
+      setNavLinkColor({
+        color: "white",
+        filter: "grayscale(100%) brightness(100000)",
+      });
+    }
+  }, [loc]);
+
   const authLinksAdmin = (
     <Fragment>
       {/* <li>
@@ -160,17 +196,23 @@ const Navbar = ({
     <Fragment>
       <li>
         <Link to="/add-achievement" className="navbar-link hero-nav-links">
-          <span className="hide-sm nav-lt">Achievements</span>
+          <span className="hide-sm nav-lt" style={navLinkColor}>
+            Achievements
+          </span>
         </Link>
       </li>
       <li>
         <Link to="/help" className="navbar-link hero-nav-links">
-          <span className="hide-sm nav-lt">About</span>
+          <span className="hide-sm nav-lt" style={navLinkColor}>
+            About
+          </span>
         </Link>
       </li>
       <li>
         <Link to="/help" className="navbar-link hero-nav-links">
-          <span className="hide-sm nav-lt">Help</span>
+          <span className="hide-sm nav-lt" style={navLinkColor}>
+            Help
+          </span>
         </Link>
       </li>
 
@@ -245,15 +287,16 @@ const Navbar = ({
       <ul className="nav-links">{guestLinks}</ul>
     </ul>
   );
+
   return (
     <div>
-      <nav className="navbar">
+      <nav className="navbar" style={navStyle}>
         <Link to="/" className="logo navbar-link" style={{ fontSize: "1.1em" }}>
           <img
             src={logo}
             alt="logo"
-            style={{ height: "50px", width: "50px" }}
             className="navbar-link hero-logo"
+            style={{ ...navLinkColor, height: "50px", width: "50px" }}
           />
         </Link>
         {!loadingAuth && (
