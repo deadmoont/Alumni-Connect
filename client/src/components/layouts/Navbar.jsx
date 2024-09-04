@@ -248,20 +248,14 @@ const Navbar = ({
   return (
     <div>
       <nav className="navbar">
-        <img
-          src={logo}
-          alt="logo"
-          style={{ height: "50px", width: "50px" }}
-          className="navbar-link hero-logo"
-        />
-        {/* <Link
-            to="/"
-            className="logo navbar-link"
-            style={{ fontSize: "1.1em" }}
-          >
-            IIITA <span style={{ textTransform: "capitalize" }}>Alumni</span>
-            <span style={{ textTransform: "capitalize" }}>Connect</span>
-          </Link> */}
+        <Link to="/" className="logo navbar-link" style={{ fontSize: "1.1em" }}>
+          <img
+            src={logo}
+            alt="logo"
+            style={{ height: "50px", width: "50px" }}
+            className="navbar-link hero-logo"
+          />
+        </Link>
         {!loadingAuth && (
           <Fragment>
             {isAuthenticated && authUser !== null
