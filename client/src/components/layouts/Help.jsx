@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { submitFeedback } from "../../actions/extras";
 import { connect } from "react-redux";
+import { motion } from "framer-motion";
 
 const Help = ({ submitFeedback }) => {
   const [formInput, setFormInput] = useState({

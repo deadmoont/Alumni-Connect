@@ -313,7 +313,7 @@ ul {
   text-align: center;
 }
 
-.hero-inner > .hero-head {
+/* .hero-inner > .hero-head {
   animation-name: landing;
   animation-duration: 0.5s;
   animation-timing-function: ease-out;
@@ -333,7 +333,7 @@ ul {
   animation-timing-function: ease-out;
   animation-delay: 800ms;
   animation-fill-mode: both;
-}
+} */
 .hero-head {
   margin-top: 20px;
   font-size: 8rem;

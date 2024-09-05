@@ -3,6 +3,7 @@ import { Link, Redirect } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { closeSideNav } from "../../actions/alert";
+import { motion } from "framer-motion";
 
 const Home = ({ closeSideNav, isAuth }) => {
   useEffect(() => {
@@ -13,9 +14,16 @@ const Home = ({ closeSideNav, isAuth }) => {
   }
   return (
     <section className="landing">
+      {/* {console.log("react versionnnnn--" + React.version)} */}
       <div className="hero">
         <div className="hero-inner">
-          <h1 className="hero-head">AlumniConnect</h1>
+          <motion.h1
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="hero-head"
+          >
+            AlumniConnect
+          </motion.h1>
           <p className="hero-text">
             Create a profile, share and interact <br />
             with your Alumni Network

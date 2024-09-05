@@ -34,6 +34,10 @@ import CreateEvent from "../Event/createEvent.jsx";
 
 import Notifications from "../notification/notifications.jsx";
 
+// // framer motion
+// import { AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
+
 const Routes = () => {
   return (
     <section
@@ -68,7 +72,11 @@ const Routes = () => {
           path="/resetPassword/:user_id/:reset_token"
           component={ResetPassword}
         />
-        <Route exact path="/help" component={Help} />
+        <Route exact path="/help">
+          <motion.div exit={{ opacity: 0 }}>
+            <Help />
+          </motion.div>
+        </Route>
         <PrivateRoute exact path="/userprofile" component={Dashboard} />
         <PrivateRoute exact path="/add-experience" component={AddExperience} />
         <PrivateRoute exact path="/add-education" component={AddEducation} />
