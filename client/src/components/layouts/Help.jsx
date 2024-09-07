@@ -31,10 +31,42 @@ const Help = ({ submitFeedback }) => {
     }, 1500);
   };
 
+  const variants = {
+    container: {
+      animate: {
+        transition: {
+          staggerChildren: 0.4,
+        },
+      },
+    },
+    card: {
+      initial: {
+        opacity: 0,
+        y: -30,
+      },
+
+      animate: {
+        opacity: 1,
+        transition: {
+          duration: 0.6,
+        },
+        y: 0,
+      },
+    },
+  };
+
   return (
     <React.Fragment>
-      <div className="help-page">
-        <div
+      <motion.div
+        className="help-page"
+        variants={variants.container}
+        initial="initial"
+        animate="animate"
+      >
+        <motion.h1 className="hero-head" variants={variants.card}>
+          Help
+        </motion.h1>
+        <motion.div
           className="container post-form-container"
           style={{
             display: "flex",
@@ -42,6 +74,7 @@ const Help = ({ submitFeedback }) => {
             alignItems: "center",
             flexDirection: "column",
           }}
+          variants={variants.card}
         >
           <div className="form-header">
             <h5 className="large">
@@ -101,7 +134,7 @@ const Help = ({ submitFeedback }) => {
               <input type="submit" value="Submit" className="btn-primary" />
             </div>
           </form>
-        </div>
+        </motion.div>
         {/* <div
           className="container"
           style={{ padding: "2em", alignSelf: "center" }}
@@ -132,7 +165,7 @@ const Help = ({ submitFeedback }) => {
             </div>
           </div>
         </div> */}
-      </div>
+      </motion.div>
     </React.Fragment>
   );
 };

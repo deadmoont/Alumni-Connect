@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
   font-family: "Work Sans", sans-serif;
   padding: 0;
@@ -359,6 +363,7 @@ ul {
   animation-fill-mode: both;
 } */
 .hero-head {
+  width: fit-content;
   margin-top: 20px;
   font-size: 8rem;
   font-weight: 700;
@@ -461,10 +466,10 @@ ul {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 20px;
 }
 
 .form {
-  border: 2px solid #1e1e1e;
   padding: 2em;
   border-radius: 15px;
   width: 70%;
@@ -495,10 +500,10 @@ input,
 .post-form {
   width: 100%;
 }
-/* .post-form-container{
-	margin: 2em 0;
-	text-align: center;
-} */
+.post-form-container {
+  margin: 2em 0;
+  text-align: center;
+}
 .form-header {
   text-align: center;
 }
@@ -1159,6 +1164,8 @@ textarea:focus {
 
 .help-page {
   display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 @media only screen and (max-width: 1135px) {

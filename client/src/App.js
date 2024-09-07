@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { Route, Switch, useLocation } from "react-router-dom";
 
 import logo from "./019eddbf5bf91320da288c242aefa491.png";
@@ -15,6 +15,7 @@ import Footer from "./components/layouts/Footer";
 // framer motion
 import { animate, AnimatePresence, transform } from "framer-motion";
 import { motion } from "framer-motion";
+import { duration } from "moment";
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -63,14 +64,30 @@ const text = {
     },
   },
 };
+const conatiner = {
+  initial: {
+    transform: "scale(1)",
+  },
+  animate: {
+    transform: "scale(0)",
+    transition: {
+      duration: 0.25,
+      when: "afterChildren",
+    },
+  },
+};
 
 const InitialTransition = () => {
   return (
-    <div className="init-screen-cont">
+    <motion.div
+      className="init-screen-cont"
+      style={{ position: "absolute", zIndex: "50" }}
+      initial="initial"
+      animate="animate"
+      variants={conatiner}
+    >
       <motion.div
         className="init-screen"
-        initial="initial"
-        animate="animate"
         variants={blackBox}
         onAnimationStart={() => document.body.classList.add("overflow-hid")}
         onAnimationComplete={() =>
@@ -106,7 +123,7 @@ const InitialTransition = () => {
           </pattern>
           <text
             className="text-4xl font-bold"
-            text-anchor="middle"
+            textAnchor="middle"
             x="50%"
             y="50%"
             style={{
@@ -119,27 +136,28 @@ const InitialTransition = () => {
           </text>
         </motion.svg>
       </motion.div>
-    </div>
+    </motion.div>
   );
 };
 
-const content = {
-  animate: {
-    transition: {
-      delayChildren: 3,
-    },
-  },
-};
-
 const App = () => {
+  const isFirstRender = useRef(true);
   const loc = useLocation();
   useEffect(() => {
     store.dispatch(loadUser());
   }, []);
+  // detecting first route change
+  useEffect(() => {
+    if (isFirstRender.current) {
+      // It's the first render
+      isFirstRender.current = false; // After first render, set it to false
+    }
+  }, []);
+
   return (
     <AnimatePresence mode="wait">
       <React.Fragment>
-        <InitialTransition />
+        {isFirstRender.current && <InitialTransition />}
         <Navbar />
         <Switch location={loc} key={loc.pathname}>
           <Route exact path="/">
