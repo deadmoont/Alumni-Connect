@@ -23,8 +23,9 @@ const Login = ({ login, isAuthenticated, closeSideNav }) => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    console.log("Form Submitted");
     login({ email, password });
-  };
+  };  
 
   if (isAuthenticated) {
     return <Redirect to="/feed/topic/Placements?search=" />;
