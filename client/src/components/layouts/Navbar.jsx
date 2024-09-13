@@ -101,11 +101,11 @@ const Navbar = ({
           <span className="hide-sm">Dashboard</span>
         </Link>
       </li>
-      <li>
+      {/* <li>
         <Link to="/feed/topic/Placements?search=" className="navbar-link">
           <span className="hide-sm">Feed</span>
         </Link>
-      </li>
+      </li> */}
       {/* <li>
         <Link to="/help" className="navbar-link">
           <span className="hide-sm">Help</span>
@@ -167,11 +167,11 @@ const Navbar = ({
         </Link>
       </li>
 
-      <li>
+      {/* <li>
         <Link to="/feed/topic/Placements?search=" className="navbar-link">
           <span className="hide-sm">Feed</span>
         </Link>
-      </li>
+      </li> */}
       {/* <li>
         <Link to="/help" className="navbar-link">
           <span className="hide-sm">Help</span>
